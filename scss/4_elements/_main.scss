@@ -1,0 +1,187 @@
+
+
+@mixin leftduration($start, $duration){
+  width: 0.3502vw * $duration;
+  left: 0.3502vw * $start + 5vw;
+}
+@mixin duration($duration){
+  width: 0.3502vw * $duration;
+}
+
+body{
+  background-color:#0a2538;
+}
+
+
+.timeline{
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  padding: 0 5vw;
+  transform: translate(0,-50%);
+}
+
+.month{
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  width: 10vw;
+  position: relative;
+  background-color: #14a721;
+
+  &:nth-of-type(2n){
+    background-color: #1387a4;
+  }
+}
+
+.name{
+  text-align: center;
+  flex-grow: 1;
+  font-size: 1.3rem;
+  height: 3.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.days{
+  display: flex;
+  width: 100%;
+  height: 3rem;
+}
+
+.day{
+  width: 0.3502vw;
+  // flex-grow: 1;
+  font-size: 0.5rem;
+  // border-left: 1px solid black;
+  height: 3rem;
+
+  &:nth-of-type(2n){
+    background-color: rgba(255,255,255,0.6);
+  }
+}
+
+.line{
+  background: red;
+  height: 1.5rem;
+  min-width: 0.3502vw;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // transition: all 2s ease-in-out;
+}
+
+.regular{
+  top: calc(50% + 0.25rem);
+}
+
+.australia{
+  top: calc(50% + 1.75rem);
+}
+
+#intro-semester{
+  position: fixed;
+  top: calc(50% + 0.25rem);
+  left: 5vw;
+  @include duration(19);
+  background-color: #2383c7;
+  height: 3rem;
+}
+
+#outro-semester{
+  @extend #intro-semester;
+  @include duration(23);
+  left: auto;
+  right: 5vw;
+}
+
+#regular-workphase-1{
+  @include duration(14);
+}
+#regular-workphase-2{
+  @include duration(31);
+}
+#regular-workphase-3{
+  @include duration(24);
+}
+
+#regular-vaccation-1{
+  @include duration(21);
+}
+#regular-semester{
+  @include duration(125);
+}
+
+
+
+#australia-workphase-1{
+  @include duration(18);
+}
+#australia-workphase-2{
+  @include duration(62);
+}
+#australia-vaccation-1{
+  @include duration(21);
+}
+#australia-vaccation-2{
+  @include duration(10);
+}
+#australia-semester{
+  @include duration(104);
+}
+
+.work{
+  background-color: #e29118;
+}
+
+.vaccation{
+  background-color: #2ac8ce;
+}
+
+.semester{
+  background-color: #ac5a08;
+}
+
+
+.regulartime, .australiatime{
+    top: calc(50% + 0.25rem);
+    position: fixed;
+    left: 5vw;
+    display: flex;
+    padding-left: 0.3502vw * 19;
+  &.collapse{
+    .work {
+      order: 1;
+    }
+    .vaccation {
+      order: 3;
+    }
+    .semester {
+      order: 2;
+    }
+  }
+}
+
+.australiatime{
+    top: calc(50% + 1.75rem);
+}
+
+
+.button{
+  position: fixed;
+  bottom: 5rem;
+  width: 10rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #f1a532;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 0 1rem rgba(0,0,0,0.4);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover{
+     background-color: #4aff26;
+  }
+
+}
